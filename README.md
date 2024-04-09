@@ -1,6 +1,6 @@
 U = Untracked
 M = Modified
 D = Deleteed
-A = Added
+A = Adde
 
 1920x1080 (16:9)
