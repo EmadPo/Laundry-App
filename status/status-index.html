@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Status Laundry</title>
+    <!-- Logo -->
+    <link
+      rel="shortcut icon"
+      href="../assets/img/Spotless-White.png"
+      type="image/x-icon"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./status-style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg pb-4 pe-4 ps-4 fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="">
+          <img
+            src="../assets/img/Spotless-White.png"
+            alt="Logo"
+            width="130"
+            height="auto"
+            class="d-inline-block align-text-top"
+          />
+        </a>
+
+        <!-- Colapse & Right-Side-Navbar -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end fs-5 font-body"
+          id="navbarNavDropdown"
+        >
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item text-light">
+              <a
+                class="nav-link"
+                href="#"
+                id="statusLaundryButton"
+                onclick="redirectHome()"
+                >Home</a
+              >
+            </li>
+
+            <!-- Add profile button -->
+            <li class="mr-5 btn-profile" id="profileButton">
+              <a href="#">
+                <i class="fa-solid fa-user"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Profile Modal -->
+    <div
+      class="modal fade"
+      id="profileModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="profileModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="profileModalLabel">User Profile</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Display profile data -->
+            <p>Name: John Doe</p>
+            <p>Email: john@example.com</p>
+            <p>Username: johndoe123</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn-custom text-light"
+              id="editButton"
+              data-toggle="modal"
+              data-target="#editProfileModal"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn-custom btn-logout text-light"
+              id="logoutButton"
+              data-toggle="modal"
+              data-target="#logoutModal"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div
+      class="modal fade"
+      id="editProfileModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editProfileModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editProfileForm">
+              <div class="form-group">
+                <label for="editName">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editName"
+                  placeholder="Enter your name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editEmail">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="editEmail"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter email"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editUsername">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editUsername"
+                  placeholder="Enter username"
+                />
+              </div>
+              <button type="submit" class="btn-custom text-light">
+                Save Changes
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="logoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">
+              Logout Confirmation
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to log out?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn-custom text-light"
+              data-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn-custom btn-logout text-light"
+              id="confirmLogoutButton"
+              onclick="redirectHome()"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- header -->
+    <header class="container">
+      <h1>Status Laundry</h1>
+      <div class="pb-5 pt-3 btn-group" role="group" aria-label="Filter">
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter active"
+          data-filter="all"
+        >
+          All
+        </button>
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter"
+          data-filter="pickup"
+        >
+          Pickup
+        </button>
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter"
+          data-filter="queue"
+        >
+          Queue
+        </button>
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter"
+          data-filter="on_process"
+        >
+          On Process
+        </button>
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter"
+          data-filter="ironed"
+        >
+          Ironed
+        </button>
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter"
+          data-filter="done"
+        >
+          Done
+        </button>
+        <button
+          type="button"
+          class="btn-custom text-light btn-filter"
+          data-filter="delivery"
+        >
+          Delivery
+        </button>
+      </div>
+
+      <div id="laundry-list" class="row">
+        <!-- Laundry items will be dynamically populated here -->
+      </div>
+    </header>
+
+    <!-- feedback -->
+    <div
+      class="modal fade"
+      id="feedbackModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="feedbackModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="feedbackModalLabel">Feedback Form</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="feedbackForm">
+              <div class="form-group">
+                <label for="feedback">Your Feedback:</label>
+                <textarea
+                  class="form-control"
+                  id="feedback"
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn-custom text-light btn-filter">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="text-light py-5 d-flex">
+      <div class="container">
+        <div class="row justify-content-between">
+          <!-- Logo -->
+          <div class="col-md-3">
+            <img
+              src="/assets/img/Spotless-White.png"
+              alt="Logo"
+              width="380"
+              class="mb-3"
+            />
+          </div>
+
+          <!-- Colm footer -->
+          <div class="col-md-3">
+            <h5>Company</h5>
+            <ul class="list-unstyled">
+              <li class="li-footer-prop pe-0 ps-0">
+                <a href="#" class="button-footer">About</a>
+              </li>
+              <li class="li-footer-prop pe-0 ps-0">
+                <a href="#" class="button-footer">Blog</a>
+              </li>
+            </ul>
+            <h5>Connect with us</h5>
+            <ul class="list-unstyled">
+              <li class="pe-0 ps-0 icon-prop">
+                <i href="#" class="fab fa-facebook pe-3"></i>
+                <i href="#" class="fab fa-linkedin pe-3"></i>
+                <i href="#" class="fab fa-instagram"></i>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Colm footer -->
+          <div class="col-md-3">
+            <h5>Join with us</h5>
+            <ul class="list-unstyled">
+              <li class="li-footer-prop pe-0 ps-0">
+                <a href="#" class="button-footer">Become Partners</a>
+              </li>
+            </ul>
+            <h5>Download App</h5>
+            <ul class="list-unstyled">
+              <li class="pe-0 ps-0">
+                <i class="fab fa-app-store-ios icon-prop pe-3"></i>
+                <i class="fab fa-google-play icon-prop"></i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Copyright -->
+    <div class="container-fluid text-light copy-prop pt-3">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p class="text-center fs-5">
+              For ABP 2024 © Spotless Apps. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- js -->
+    <script src="./status-script.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
