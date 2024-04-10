@@ -1,0 +1,231 @@
+/* body */
+body {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+a,
+a:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* btn */
+.btn-custom {
+  background-color: #464bbe;
+  border-radius: 20px;
+  color: #d5d5d5 !important;
+  border-color: transparent;
+  padding: 1vh 3vh 1vh 3vh;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: 0.3s ease;
+}
+.btn-custom:hover {
+  border-color: transparent;
+  color: #ffffff !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/* navbar */
+.navbar {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.5s ease;
+}
+
+.navbar.scrolled {
+  background-color: #464bbe;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 20px, rgba(0, 0, 0, 0.1) 0px 15px 12px;
+}
+li {
+  margin: auto;
+  padding-left: 1.5vh;
+  padding-right: 1.5vh;
+}
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff; /* Warna garis bawah */
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.nav-link:hover::before {
+  color: inherit;
+  transform: scaleX(1);
+}
+.btn-profile {
+  background-color: transparent !important;
+  border: none;
+  padding: 0;
+  color: #ffffff !important;
+  font-size: 24px;
+}
+
+/* header */
+header {
+  padding: 0 0 0 0;
+  position: relative;
+}
+header img {
+  max-height: fit-content;
+  height: auto;
+  object-fit: cover;
+  z-index: 0;
+}
+header h1,
+p {
+  color: #ffffff;
+}
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent);
+}
+
+/* body */
+.body-prop {
+  padding: 10vh 30vh 10vh 30vh;
+  background-color: #101820;
+  border-radius: 13vh 13vh 0 0;
+  line-height: 1.6;
+  margin: -15vh auto 0 auto;
+  position: relative;
+}
+.body-img-prop {
+  border-radius: 10vh;
+  box-shadow: #251f4280 0px 3px 5px 0px;
+}
+.body-prop,
+p {
+  font-size: 3vh;
+}
+.card-custom {
+  background-color: rgb(22, 32, 44) !important;
+  border-radius: 20px;
+  margin: 0 1vh 0 1vh;
+  max-width: 40vh !important;
+}
+.card-body-prop {
+  border-radius: 10px;
+  background-color: inherit !important;
+}
+.card-text {
+  font-size: 2.8vh;
+}
+
+/* why spotless */
+.testimonial {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.testimonial img {
+  border-radius: 50%;
+  width: 100px !important;
+  height: 100px !important;
+  margin: 0 auto 20px;
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
+
+.testimonial h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.testimonial p {
+  font-size: 16px;
+  color: #666;
+}
+
+.testimonial .item {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 15%;
+  margin: 2vh 1vh 2vh 1vh;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/* interested */
+.interested {
+  background-color: #ededed;
+  padding: 10vh 0 30vh 0;
+  position: relative;
+}
+
+/* download app */
+.download-prop {
+  background-color: #464bbe;
+  border-radius: 13vh 13vh 0 0;
+  position: relative;
+  margin: -15vh auto 0 auto;
+}
+.btn-download-prop {
+  display: flex;
+  padding: 3vh 0 3vh 0;
+}
+.btn-download-prop p {
+  padding: 0 1vh 0 1vh;
+  margin: 0;
+  color: #0c0d0e;
+}
+.btn-download {
+  background-color: #f5f7f8;
+  border-radius: 100px;
+  height: 100%;
+  border-color: transparent;
+  padding: 0.5vh 2.5vh 0.5vh 2.5vh;
+  margin: 0 1vh 0 1vh;
+  color: #0c0d0e;
+  box-shadow: transparent;
+  transition: 0.3s ease;
+}
+.btn-download:hover {
+  box-shadow: rgba(227, 214, 214, 0.6) 1px 1px 10px 3px;
+}
+.icon-download {
+  font-size: 3.2vh;
+}
+.border-prop {
+  border-bottom: 2px solid #595cbe;
+  border-width: 0.4vh;
+}
+
+/* footer */
+footer {
+  position: relative;
+  background-color: #464bbe;
+}
+.li-footer-prop {
+  list-style: none;
+  padding: 1vh 0 1vh 0;
+}
+
+.button-footer {
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.button-footer:hover {
+  color: #ffffff;
+  text-shadow: 2px 2px 3px #ffffff80;
+}
+
+.icon-prop {
+  font-size: 4.5vh;
+}
+
+.copy-prop {
+  background-color: #4246ab;
+}

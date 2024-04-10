@@ -1,8 +1,3 @@
-// theme
-function toggleTheme() {
-  document.body.classList.toggle('dark-theme');
-}
-
 // transparent navbar
 window.onscroll = function () {
   scrollFunction();
@@ -113,6 +108,16 @@ document
     fadeIn(document.getElementById('loginModal')); // Show sign in modal with fade animation
   });
 
-function redirectHome(){
-  window.location.href = "../home/home-index.html"
+// scroll to section
+function scrollToFooter() {
+  var footer = document.getElementById('footer');
+  footer.scrollIntoView({ behavior: 'smooth' });
+}
+
+// direct
+function redirectHome() {
+  window.location.href = '../home/home-index.html';
+}
+function redirectPartner() {
+  window.location.href = '../partner/partner-index.html';
 }

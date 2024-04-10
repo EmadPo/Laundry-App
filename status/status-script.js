@@ -1,6 +1,6 @@
 // ngeload filter all
 function initializePage() {
-  const initialFilter = 'queue';
+  const initialFilter = 'all';
   displayLaundryItems(initialFilter);
 }
 

@@ -1,4 +1,4 @@
-/* Global styles */
+/* body */
 body {
   font-family: 'IBM Plex Sans', sans-serif;
 }
@@ -8,6 +8,7 @@ a:hover {
   color: inherit !important;
 }
 
+/* btn */
 .btn-custom {
   background-color: #464bbe;
   border-radius: 20px;
@@ -16,12 +17,10 @@ a:hover {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   transition: 0.3s ease;
 }
-
 .btn-custom:hover {
   border-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
-
 .btn-logout {
   background-color: red;
 }
