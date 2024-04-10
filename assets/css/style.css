@@ -1,11 +1,129 @@
 /* body */
-.font-body {
-  font-family: 'IBM Plex Sans', sans-serif;
+body {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Safari, and Opera */
+}
+
+img {
+  pointer-events: none; /* Mencegah gambar dari interaksi pointer */
 }
 a,
 a:hover {
   text-decoration: none !important;
   color: inherit !important;
+  cursor: pointer !important;
+}
+
+/* login */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6); /* Ubah opacity untuk efek gelap */
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30% !important;
+  animation: slideInFromTop 0.5s ease forwards, fadeIn 0.5s ease forwards;
+}
+
+@keyframes slideInFromTop {
+  from {
+    transform: translateY(-15%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Keyframes untuk animasi fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Efek transisi warna saat hover */
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #555;
+  color: #555;
+  font-size: 16px;
+  resize: none;
+  font-family: 'ocr', sans-serif;
+}
+
+input {
+  outline: none;
+}
+
+.submit-button {
+  margin: 2vh 0 0 0;
+}
+.submit-button {
+  padding: 0.5rem 1rem;
+  transition: 0.4s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #ffffff;
+  background-image: linear-gradient(
+    45deg,
+    #464bbe 0%,
+    #804aff 51%,
+    #464bbe 100%
+  );
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+.submit-button:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.submit-button:active {
+  transform: scale(0.95);
+}
+.signupBtn {
+  color: #464bbe !important;
 }
 
 /* navbar */
@@ -21,7 +139,7 @@ a:hover {
 }
 li {
   margin: auto;
-  padding-left: 1.5vh; 
+  padding-left: 1.5vh;
   padding-right: 1.5vh;
 }
 
@@ -223,156 +341,4 @@ footer {
 
 .copy-prop {
   background-color: #131416;
-}
-
-/* login */
-/* CSS untuk popup login */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6); /* Ubah opacity untuk efek gelap */
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 30% !important;
-  animation: fadeIn 0.3s ease; /* Animasi fade saat muncul */
-}
-
-/* Animasi fade */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  transition: color 0.3s ease; /* Efek transisi warna saat hover */
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  background: none;
-  border: none;
-  border-bottom: 2px solid #555;
-  color: #555;
-  font-size: 16px;
-  resize: none;
-  font-family: 'ocr', sans-serif;
-}
-
-input {
-  outline: none;
-}
-
-.submit-button {
-  margin: 2vh 0 0 0;
-}
-.submit-button {
-  padding: 0.5rem 1rem;
-  transition: 0.4s;
-  background-size: 200% auto;
-  color: white;
-  border-radius: 10px;
-  display: block;
-  border: 0px;
-  font-weight: 700;
-  box-shadow: 0px 0px 14px -7px #ffffff;
-  background-image: linear-gradient(
-    45deg,
-    #464bbe 0%,
-    #804aff 51%,
-    #464bbe 100%
-  );
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
-.submit-button:hover {
-  background-position: right center;
-  color: #fff;
-  text-decoration: none;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-.submit-button:active {
-  transform: scale(0.95);
-}
-.signupBtn {
-  color: #464bbe !important;
-}
-
-/* responsive */
-@media (max-width: 500px) {
-  .header-content h1 {
-    font-size: 4vh; /* Decrease font size for header */
-  }
-
-  .btn-explore-sign_in {
-    padding: 0.8rem 1.5rem; /* Adjust padding for buttons */
-  }
-
-  .body-prop,
-  p {
-    font-size: 2.5vh; /* Decrease font size for body text */
-  }
-
-  .testimonial img {
-    width: 80px !important;
-    height: 80px !important; /* Adjust size of testimonial images */
-  }
-}
-
-/* For devices up to 700px */
-@media (max-width: 700px) {
-  .header-content h1 {
-    font-size: 3.5vh; /* Further decrease font size for header */
-  }
-
-  .navbar-nav {
-    font-size: 3vh; /* Decrease font size for navbar items */
-  }
-}
-
-/* For devices up to 992px */
-@media (max-width: 992px) {
-  .header-content h1 {
-    font-size: 3vh; /* Further decrease font size for header */
-  }
-
-  .body-prop,
-  p {
-    font-size: 2.2vh; /* Further decrease font size for body text */
-  }
-
-  .testimonial img {
-    width: 70px !important;
-    height: 70px !important; /* Further adjust size of testimonial images */
-  }
 }

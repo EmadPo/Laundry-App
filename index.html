@@ -50,8 +50,66 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
+    <!-- Sweet Alert -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
   </head>
   <body>
+    <!-- sign in sign up pop up -->
+    <!-- sign in pop up -->
+    <div id="signin" class="modal sign-in-prop">
+      <div class="modal-content">
+        <!-- close btn -->
+        <span id="closeModalBtn" class="close d-flex justify-content-end"
+          >&times;</span
+        >
+        <h2 class="text-center">Sign In</h2>
+        <form id="signinForm">
+          <input type="text" placeholder="Username" name="username" required />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <p class="text-center mt-3 fs-6 d-flex justify-content-start">
+            Don't have an account? &nbsp
+            <a id="signupBtn" class="signupBtn fw-medium">Sign Up </a>
+          </p>
+          <button type="submit" class="submit-button" onclick="redirectHome()">
+            Sign In
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- sign up -->
+    <div id="signup" class="modal sign-up-prop">
+      <div class="modal-content">
+        <span class="close d-flex justify-content-end">&times;</span>
+        <h2 class="text-center">Sign Up</h2>
+        <form id="signupForm">
+          <input type="text" placeholder="Username" name="username" required />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+          <p class="text-center mt-3 fs-6 d-flex justify-content-start">
+            Have an account? &nbsp
+            <a id="signinFromSignup" class="signupBtn fw-medium">Sign In </a>
+          </p>
+          <button id="createAccountBtn" type="submit" class="submit-button">
+            Sign Up
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- navbar -->
     <nav id="navbar" class="navbar navbar-expand-lg pb-4 pe-4 ps-4 fixed-top">
       <!-- logo -->
@@ -98,7 +156,7 @@
               <a class="nav-link" href="#footer">Help</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" id="signinBtn">Sign In</a>
+              <a class="nav-link" id="signinBtn">Sign In</a>
             </li>
           </ul>
         </div>
@@ -119,8 +177,11 @@
       >
         <h1>Welcome to Spotless Homepage</h1>
         <p>1 product on 2 platforms. Meets people's needs</p>
-        <button class="btn-explore-sign_in mt-3 text-light fw-medium">
-          <a href="#" id="signinBtn"> Sign In </a>
+        <button
+          id="signinHeaderBtn"
+          class="btn-explore-sign_in mt-3 text-light fw-medium"
+        >
+          <a> Sign In </a>
         </button>
         <i class="fas fa-arrow-up pt-4 arrow-prop"></i>
       </div>
@@ -130,12 +191,12 @@
     <div
       class="col-md-12 d-flex flex-column align-items-center justify-content-center text-center container-prop"
     >
-      <h1>We’re Spotless, the laundry of change</h1>
+      <h1 id="blog">We’re Spotless, the laundry of change</h1>
       <button class="btn-explore-sign_in mt-3 text-light fw-medium">
-        Explore Spotless
+        <a href="#blog"> Explore Spotless </a>
       </button>
     </div>
-    <div id="blog" class="body-prop text-center text-light">
+    <div class="body-prop text-center text-light">
       <h1 class="pb-5">Provides Convenience in Laundry</h1>
       <div class="row">
         <div class="col-md-6 text-start">
@@ -311,7 +372,7 @@
     </footer>
 
     <!-- Copyright -->
-    <div class="container-fluid text-light copy-prop py-3">
+    <div class="container-fluid text-light copy-prop pt-3">
       <div class="container">
         <div class="row">
           <div class="col">
@@ -320,54 +381,6 @@
             </p>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- login -->
-    <div id="loginModal" class="modal">
-      <div class="modal-content">
-        <span class="close d-flex justify-content-end">&times;</span>
-        <h2 class="text-center">Login</h2>
-        <form id="loginForm">
-          <input type="text" placeholder="Username" name="username" required />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-          />
-          <p class="text-center mt-3 fs-6 d-flex justify-content-start">
-            Don't have an account? &nbsp
-            <a href="#" id="signupBtn" class="signupBtn fw-medium">Sign Up </a>
-          </p>
-          <button type="submit" class="submit-button" onclick="redirectHome()">
-            Sign In
-          </button>
-        </form>
-      </div>
-    </div>
-
-    <!-- register -->
-    <div id="registerModal" class="modal">
-      <div class="modal-content">
-        <span class="close d-flex justify-content-end">&times;</span>
-        <h2 class="text-center">Register</h2>
-        <form id="registerForm">
-          <input type="text" placeholder="Username" name="username" required />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-          />
-          <p class="text-center mt-3 fs-6 d-flex justify-content-start">
-            Have an account? &nbsp
-            <a href="#" id="signinFromSignup" class="signupBtn fw-medium"
-              >Sign In
-            </a>
-          </p>
-          <button type="submit" class="submit-button">Sign Up</button>
-        </form>
       </div>
     </div>
 
@@ -390,5 +403,8 @@
 
     <!-- Owl Carousel -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

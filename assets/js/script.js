@@ -1,117 +1,112 @@
-// transparent navbar
+// Transparent navbar and handleModal function
 window.onscroll = function () {
   scrollFunction();
 };
 
+var signinBtn = document.getElementById('signinBtn');
+var signinModal = document.getElementById('signin');
+var signUpBtn = document.getElementById('signupBtn');
+var signUpModal = document.getElementById('signup');
+var closeModalBtns = document.querySelectorAll('.close');
+var signInFromSignUpBtn = document.getElementById('signinFromSignup');
+var createAccountBtn = document.getElementById('createAccountBtn');
+
 function scrollFunction() {
+  var navbar = document.getElementById('navbar');
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    document.getElementById('navbar').classList.add('scrolled');
+    navbar.classList.add('scrolled');
   } else {
-    document.getElementById('navbar').classList.remove('scrolled');
+    navbar.classList.remove('scrolled');
   }
 }
 
-// slider
-$(document).ready(function () {
-  const testimonial = $('.testimonial');
-
-  testimonial.owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: false,
-    dots: true,
-    autoplay: true,
-    autoplayTimeout: 3000, //ms
-    autoplayHoverPause: true,
-    responsive: {
-      0: {
-        items: 1,
-      },
-      600: {
-        items: 2,
-      },
-      1000: {
-        items: 3,
-      },
-    },
+function handleModal(btn, modal) {
+  btn.addEventListener('click', function () {
+    modal.style.display = 'block';
+    // Tambahkan event listener khusus untuk tombol sign up
+    signUpBtn.removeEventListener('click', closeSigninModal);
   });
-});
 
-// navbar on scroll
-$(document).ready(function () {
-  // Ketika tombol "Blog" diklik
-  $("a[href='#blog']").click(function () {
-    // Mendapatkan posisi vertikal dari bagian "Provides Convenience in Laundry"
-    var targetOffset = $('.body-prop').offset().top;
-
-    // Menganimasikan scroll ke posisi tersebut
-    $('html, body').animate(
-      {
-        scrollTop: targetOffset,
-      },
-      1000
-    );
+  window.addEventListener('click', function (event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+      // Hapus event listener setelah pop-up ditutup
+      signUpBtn.addEventListener('click', closeSigninModal);
+    }
   });
-});
-
-// sign in
-document.getElementById('signinBtn').addEventListener('click', function () {
-  fadeIn(document.getElementById('loginModal')); // Menampilkan pop-up dengan animasi fade
-});
-
-document.querySelector('.close').addEventListener('click', function () {
-  fadeOut(document.getElementById('loginModal')); // Menyembunyikan pop-up dengan animasi fade
-});
-
-// menampilkan pop-up dengan animasi fade
-function fadeIn(element) {
-  element.style.display = 'block';
-  setTimeout(function () {
-    element.style.opacity = '1';
-  }, 10); // Menetapkan opacity setelah sedikit delay agar animasi berjalan
 }
 
-// menyembunyikan pop-up dengan animasi fade
-function fadeOut(element) {
-  element.style.opacity = '0';
-  setTimeout(function () {
-    element.style.display = 'none';
-  }, 300); // Menyembunyikan pop-up setelah animasi fade selesai
+// Tambahkan event listener pada tombol sign pada pop up sign up
+// Tambahkan event listener pada tombol sign in pada pop up sign up
+signInFromSignUpBtn.addEventListener('click', function (event) {
+  event.preventDefault(); // Mencegah default behavior dari link
+
+  // Sembunyikan pop up sign up
+  signUpModal.style.display = 'none';
+
+  // Tampilkan pop up sign in
+  signinModal.style.display = 'block';
+  signinModal.classList.add('fade-out'); // Tambahkan kelas untuk animasi fade out
+});
+
+// Temukan elemen tombol sign in pada header
+var signinHeaderBtn = document.getElementById('signinHeaderBtn'); // Ganti 'signinHeaderBtn' dengan id yang sesuai dengan tombol sign in pada header
+
+// Tambahkan event listener pada tombol sign in pada header
+signinHeaderBtn.addEventListener('click', function () {
+  // Saat tombol sign in pada header diklik, tampilkan pop up sign in
+  signinModal.style.display = 'block';
+});
+
+// Function untuk menutup pop-up sign in
+function closeSigninModal(event) {
+  event.preventDefault();
+  signinModal.style.display = 'none';
 }
 
-document.getElementById('signupBtn').addEventListener('click', function () {
-  fadeIn(document.getElementById('registerModal')); // Show register modal with fade animation
-});
+// Panggil fungsi handleModal
+handleModal(signinBtn, signinModal);
+handleModal(signUpBtn, signUpModal);
 
-// menyembunyikan register modal
-document
-  .querySelector('#registerModal .close')
-  .addEventListener('click', function () {
-    fadeOut(document.getElementById('registerModal')); // Hide register modal with fade animation
+// Close modals
+closeModalBtns.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    // Sembunyikan semua modal
+    var modals = document.querySelectorAll('.modal');
+    modals.forEach(function (modal) {
+      modal.style.display = 'none';
+    });
   });
-
-document.getElementById('signupBtn').addEventListener('click', function () {
-  fadeOut(document.getElementById('loginModal')); // Hide sign in modal with fade animation
-  fadeIn(document.getElementById('registerModal')); // Show sign up modal with fade animation
 });
 
-window.addEventListener('click', function (event) {
-  if (event.target == document.getElementById('registerModal')) {
-    fadeOut(document.getElementById('registerModal')); // Hide sign up modal if clicked outside with fade animation
-  }
-});
-
-document
-  .getElementById('signinFromSignup')
-  .addEventListener('click', function () {
-    fadeOut(document.getElementById('registerModal')); // Hide sign up modal with fade animation
-    fadeIn(document.getElementById('loginModal')); // Show sign in modal with fade animation
+// Tambahkan event listener untuk menampilkan notifikasi saat tombol diklik
+createAccountBtn.addEventListener('click', function () {
+  // Tampilkan notifikasi menggunakan SweetAlert2
+  Swal.fire({
+    icon: 'success',
+    title: 'Akun berhasil dibuat!',
+    text: 'Silakan login kembali untuk mengakses akun Anda.',
+    showCancelButton: false,
+    confirmButtonText: 'OK',
+  }).then((result) => {
+    // Setelah tombol "OK" ditekan, arahkan ke pop up sign in
+    if (result.isConfirmed) {
+      // Langsung arahkan ke pop up sign in setelah menutup notifikasi
+      signinModal.style.display = 'block';
+      // Sembunyikan pop up sign up
+      signUpModal.style.display = 'none';
+    }
   });
+});
 
 // scroll to section
 function scrollToFooter() {
   var footer = document.getElementById('footer');
   footer.scrollIntoView({ behavior: 'smooth' });
+}
+function scrollToBlog() {
+  var blog = document.getElementById('blog');
+  blog.scrollIntoView({ behavior: 'smooth' });
 }
 
 // direct
