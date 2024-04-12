@@ -21,21 +21,28 @@ a:hover {
 /* login */
 .modal {
   display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.6); /* Ubah opacity untuk efek gelap */
+  background-color: rgba(0, 0, 0, 0.6);
+  top: 50%;
+  left: 50%;
+  transition: opacity 0.3s ease;
 }
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
+  padding: 4vh;
   border: 1px solid #888;
-  width: 30% !important;
+  width: 40% !important;
   animation: slideInFromTop 0.5s ease forwards, fadeIn 0.5s ease forwards;
+  margin: 0 auto; /* Center the modal horizontally */
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: 100% !important;
+  animation: slideInFromTop 0.5s ease forwards, fadeIn 0.5s ease forwards;
+}
+.sign-in-prop {
+  padding: 15% 0 10% 0 !important;
+}
+.sign-up-prop {
+  padding: 8% 0 6% 0 !important;
 }
 
 @keyframes slideInFromTop {
@@ -55,6 +62,9 @@ a:hover {
   to {
     opacity: 1;
   }
+}
+.fade-out {
+  opacity: 0;
 }
 .close {
   color: #aaa;
@@ -80,9 +90,19 @@ input {
   font-size: 16px;
   resize: none;
   font-family: 'ocr', sans-serif;
+  outline: none;
 }
 
-input {
+textarea {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #555;
+  color: #555;
+  font-size: 16px;
+  resize: none;
+  font-family: 'ocr', sans-serif;
   outline: none;
 }
 

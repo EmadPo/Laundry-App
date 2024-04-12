@@ -1,8 +1,3 @@
-// Transparent navbar and handleModal function
-window.onscroll = function () {
-  scrollFunction();
-};
-
 var signinBtn = document.getElementById('signinBtn');
 var signinModal = document.getElementById('signin');
 var signUpBtn = document.getElementById('signupBtn');
@@ -10,6 +5,11 @@ var signUpModal = document.getElementById('signup');
 var closeModalBtns = document.querySelectorAll('.close');
 var signInFromSignUpBtn = document.getElementById('signinFromSignup');
 var createAccountBtn = document.getElementById('createAccountBtn');
+
+// Transparent navbar and handleModal function
+window.onscroll = function () {
+  scrollFunction();
+};
 
 function scrollFunction() {
   var navbar = document.getElementById('navbar');
@@ -37,16 +37,24 @@ function handleModal(btn, modal) {
 }
 
 // Tambahkan event listener pada tombol sign pada pop up sign up
-// Tambahkan event listener pada tombol sign in pada pop up sign up
+// Temukan tombol sign in di pop up sign up
+
+
+// Tambahkan event listener pada tombol sign in di pop up sign up
 signInFromSignUpBtn.addEventListener('click', function (event) {
   event.preventDefault(); // Mencegah default behavior dari link
 
-  // Sembunyikan pop up sign up
-  signUpModal.style.display = 'none';
+  // Terapkan kelas fade-out pada pop up sign up
+  signUpModal.classList.add('fade-out');
 
-  // Tampilkan pop up sign in
-  signinModal.style.display = 'block';
-  signinModal.classList.add('fade-out'); // Tambahkan kelas untuk animasi fade out
+  // Tunggu sampai animasi fade-out selesai
+  setTimeout(function () {
+    // Sembunyikan pop up sign up
+    signUpModal.style.display = 'none';
+
+    // Tampilkan pop up sign in
+    signinModal.style.display = 'block';
+  }, 500); // Sesuaikan dengan durasi animasi, dalam kasus ini 0.5 detik (500 milidetik)
 });
 
 // Temukan elemen tombol sign in pada header
@@ -96,6 +104,29 @@ createAccountBtn.addEventListener('click', function () {
       // Sembunyikan pop up sign up
       signUpModal.style.display = 'none';
     }
+  });
+});
+
+// slider
+$(document).ready(function () {
+  $('.testimonial').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 2,
+      },
+      1000: {
+        items: 3,
+      },
+    },
   });
 });
 
