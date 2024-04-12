@@ -25,6 +25,30 @@ document.addEventListener('DOMContentLoaded', function () {
   const passwordInput = document.getElementById('password');
   const togglePasswordButton = document.getElementById('togglePassword');
   const toggleIcon = document.getElementById('toggleIcon');
+  const emailInputs = document.querySelectorAll('input[type="text"]');
+  const passwordInputs = document.querySelectorAll('input[type="password"]');
+  const signinModal = document.getElementById('signin');
+  const signUpModal = document.getElementById('signup');
+
+  window.addEventListener('click', function (event) {
+    // Periksa apakah klik terjadi di luar pop-up sign-in
+    if (event.target === signinModal) {
+      signinModal.classList.add('fade-out'); // Tambahkan class fade-out
+      setTimeout(function () {
+        signinModal.style.display = 'none'; // Sembunyikan pop-up sign-in setelah animasi fade-out selesai
+        signinModal.classList.remove('fade-out'); // Hapus class fade-out
+      }, 300); // Sesuaikan dengan durasi animasi fade-out (dalam milidetik)
+    }
+
+    // Periksa apakah klik terjadi di luar pop-up sign-up
+    if (event.target === signUpModal) {
+      signUpModal.classList.add('fade-out'); // Tambahkan class fade-out
+      setTimeout(function () {
+        signUpModal.style.display = 'none'; // Sembunyikan pop-up sign-up setelah animasi fade-out selesai
+        signUpModal.classList.remove('fade-out'); // Hapus class fade-out
+      }, 300); // Sesuaikan dengan durasi animasi fade-out (dalam milidetik)
+    }
+  });
 
   signupBtn.addEventListener('click', function () {
     signinModal.style.display = 'none';
@@ -42,6 +66,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ubah ikon berdasarkan tipe input
     toggleIcon.classList.toggle('fa-eye-slash');
+  });
+
+  // Tambahkan event listener pada input teks untuk kedua formulir
+  emailInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value.trim() !== '') {
+        input.style.fontWeight = '500';
+        input.style.color = 'black';
+      } else {
+        input.style.fontWeight = 'normal';
+        input.style.color = 'initial'; // Atur warna kembali ke default
+      }
+    });
+  });
+
+  passwordInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value.trim() !== '') {
+        input.style.fontWeight = '500';
+        input.style.color = 'black';
+      } else {
+        input.style.fontWeight = 'normal';
+        input.style.color = 'initial'; // Atur warna kembali ke default
+      }
+    });
   });
 });
 

@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   signinForm.addEventListener('submit', function (event) {
     event.preventDefault();
-
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
 
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // Validasi format email
+    // Validasi email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       Swal.fire({

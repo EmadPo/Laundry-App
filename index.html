@@ -65,24 +65,34 @@
     ></script>
   </head>
   <body>
-
     <!-- sign in pop up -->
     <div id="signin" class="modal sign-in-prop">
       <div class="modal-content">
         <!-- close btn -->
-        <span id="closeModalBtn" class="close d-flex justify-content-end">&times;</span>
+        <span id="closeModalBtn" class="close d-flex justify-content-end"
+          >&times;</span
+        >
         <h2 class="text-center">Sign In</h2>
         <form id="signinForm">
-          <input type="text" placeholder="Email" name="email" id="email"  />
+          <input type="text" placeholder="Email" name="email" id="email" />
           <div class="d-flex pass-prop">
-            <input type="password" placeholder="Password" name="password" id="password"  />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+            />
             <button id="togglePassword" type="button">
               <i id="toggleIcon" class="fas fa-eye"></i>
             </button>
           </div>
-          <span id="signinError" class="error-message"></span> 
-          <button type="submit" class="submit-button">Sign In</button>
-          <p class="text-center mt-3 fs-6 d-flex justify-content-start fw-normal">
+          <span id="signinError" class="error-message"></span>
+          <button id="signinbtns" type="submit" class="submit-button">
+            Sign In
+          </button>
+          <p
+            class="text-center mt-3 fs-6 d-flex justify-content-start fw-normal"
+          >
             Don't have an account? &nbsp
             <a id="signupBtn" class="signupBtn fw-medium">Sign Up </a>
           </p>
@@ -91,7 +101,7 @@
           <p class="text-center fs-6 fw-medium">Or sign up with:</p>
           <div class="d-flex justify-content-center mt-3 gap-2">
             <button class="btn-social btn-google">
-              <i class="fab fa-google "></i>
+              <i class="fab fa-google"></i>
             </button>
             <button class="btn-social btn-facebook">
               <i class="fab fa-facebook-f p-1"></i>
@@ -107,16 +117,42 @@
         <span class="close d-flex justify-content-end">&times;</span>
         <h2 class="text-center">Sign Up</h2>
         <form id="signupForm">
-          <input id="username" type="text" placeholder="Username" name="username"required/>
-          <input id="email"placeholder="Email Address" name="email" required></input>
-          <input id="password" type="password" placeholder="Password" name="password" required/>
-          <input id="phone" type="tel" placeholder="Phone Number" name="phone" required />
-          <input id="city" placeholder="City" name="city" required></input>
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            name="username"
+          />
+          <input
+            id="email"
+            placeholder="Email Address"
+            name="email"
+          />
+          <input
+            id="phone"
+            type="tel"
+            placeholder="Phone Number"
+            name="phone"
+          />
+          <input id="city" placeholder="City" name="city" />
+          <div class="d-flex pass-prop">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+            />
+            <button id="togglePassword" type="button">
+              <i id="toggleIcon" class="fas fa-eye"></i>
+            </button>
+          </div>
           <span id="addressError" class="error-message"></span>
           <button id="createAccountBtn" type="submit" class="submit-button">
             Sign Up
           </button>
-          <p class="text-center mt-3 fs-6 d-flex justify-content-start fw-normal">
+          <p
+            class="text-center mt-3 fs-6 d-flex justify-content-start fw-normal"
+          >
             Have an account? &nbsp
             <a id="signinFromSignup" class="signupBtn fw-semibold">Sign In </a>
           </p>
@@ -125,7 +161,7 @@
           <p class="text-center fs-6 fw-medium">Or sign up with:</p>
           <div class="d-flex justify-content-center mt-3 gap-2">
             <button class="btn-social btn-google">
-              <i class="fab fa-google "></i>
+              <i class="fab fa-google"></i>
             </button>
             <button class="btn-social btn-facebook">
               <i class="fab fa-facebook-f p-1"></i>
@@ -431,9 +467,10 @@
       </div>
     </div>
 
-    <!--  -->
-    <script src="/assets/js/script.js"></script> 
-    <script src="/assets/js/validator.js"></script> 
+    <!-- js -->
+    <script src="/assets/js/script.js"></script>
+    <script src="/assets/js/validator-signin.js"></script>
+    <script src="/assets/js/validator-signup.js"></script>
 
     <!-- bootstrap -->
     <script
