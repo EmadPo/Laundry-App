@@ -41,8 +41,43 @@ a:hover {
 .sign-in-prop {
   padding: 15% 0 10% 0 !important;
 }
+#togglePassword {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid #555;
+}
+.btm {
+  transition: 0.8s ease;
+}
 .sign-up-prop {
   padding: 8% 0 6% 0 !important;
+}
+#createAccountBtn {
+  width: 100%;
+}
+.btn-google {
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 1vh 1.8vh;
+  transition: 0.8s ease;
+}
+.btn-google:hover {
+  background-color: #c13525;
+  color: #ffffff;
+}
+.btn-facebook {
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 1vh 1.7vh;
+  transition: 0.8s ease;
+}
+.btn-facebook:hover {
+  background-color: #2d4373;
+  color: #ffffff;
+}
+.input-invalid {
+  background-color: #ffcccc; /* Warna latar belakang merah untuk input tidak valid */
 }
 
 @keyframes slideInFromTop {

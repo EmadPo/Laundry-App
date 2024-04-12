@@ -65,31 +65,39 @@
     ></script>
   </head>
   <body>
-    <!-- sign in sign up pop up -->
+
     <!-- sign in pop up -->
     <div id="signin" class="modal sign-in-prop">
       <div class="modal-content">
         <!-- close btn -->
-        <span id="closeModalBtn" class="close d-flex justify-content-end"
-          >&times;</span
-        >
+        <span id="closeModalBtn" class="close d-flex justify-content-end">&times;</span>
         <h2 class="text-center">Sign In</h2>
         <form id="signinForm">
-          <input type="text" placeholder="Username" name="username" required />
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-          />
-          <p class="text-center mt-3 fs-6 d-flex justify-content-start">
+          <input type="text" placeholder="Email" name="email" id="email"  />
+          <div class="d-flex pass-prop">
+            <input type="password" placeholder="Password" name="password" id="password"  />
+            <button id="togglePassword" type="button">
+              <i id="toggleIcon" class="fas fa-eye"></i>
+            </button>
+          </div>
+          <span id="signinError" class="error-message"></span> 
+          <button type="submit" class="submit-button">Sign In</button>
+          <p class="text-center mt-3 fs-6 d-flex justify-content-start fw-normal">
             Don't have an account? &nbsp
             <a id="signupBtn" class="signupBtn fw-medium">Sign Up </a>
           </p>
-          <button type="submit" class="submit-button" onclick="redirectHome()">
-            Sign In
-          </button>
         </form>
+        <div class="social-signup">
+          <p class="text-center fs-6 fw-medium">Or sign up with:</p>
+          <div class="d-flex justify-content-center mt-3 gap-2">
+            <button class="btn-social btn-google">
+              <i class="fab fa-google "></i>
+            </button>
+            <button class="btn-social btn-facebook">
+              <i class="fab fa-facebook-f p-1"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -99,52 +107,28 @@
         <span class="close d-flex justify-content-end">&times;</span>
         <h2 class="text-center">Sign Up</h2>
         <form id="signupForm">
-          <input
-            id="username"
-            type="text"
-            placeholder="Username"
-            name="username"
-            required
-          />
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            required
-          />
-          <input
-            id="phone"
-            type="tel"
-            placeholder="Phone Number"
-            name="phone"
-            required
-          />
-          <textarea
-            id="address"
-            placeholder="Address"
-            name="address"
-            required
-          ></textarea>
+          <input id="username" type="text" placeholder="Username" name="username"required/>
+          <input id="email"placeholder="Email Address" name="email" required></input>
+          <input id="password" type="password" placeholder="Password" name="password" required/>
+          <input id="phone" type="tel" placeholder="Phone Number" name="phone" required />
+          <input id="city" placeholder="City" name="city" required></input>
           <span id="addressError" class="error-message"></span>
-          <p class="text-center mt-3 fs-6 d-flex justify-content-start">
-            Have an account? &nbsp
-            <a id="signinFromSignup" class="signupBtn fw-semibold">Sign In </a>
-          </p>
           <button id="createAccountBtn" type="submit" class="submit-button">
             Sign Up
           </button>
+          <p class="text-center mt-3 fs-6 d-flex justify-content-start fw-normal">
+            Have an account? &nbsp
+            <a id="signinFromSignup" class="signupBtn fw-semibold">Sign In </a>
+          </p>
         </form>
         <div class="social-signup">
-          <p class="text-center mt-3 fs-6">Or sign up with:</p>
-          <div class="d-flex justify-content-center mt-3">
-            <!-- Sign up with Google -->
+          <p class="text-center fs-6 fw-medium">Or sign up with:</p>
+          <div class="d-flex justify-content-center mt-3 gap-2">
             <button class="btn-social btn-google">
-              <i class="fab fa-google me-2"></i>
+              <i class="fab fa-google "></i>
             </button>
-            <!-- Sign up with Facebook -->
             <button class="btn-social btn-facebook">
-              <i class="fab fa-facebook-f me-2"></i>
+              <i class="fab fa-facebook-f p-1"></i>
             </button>
           </div>
         </div>
@@ -219,7 +203,7 @@
         <h1>Welcome to Spotless Homepage</h1>
         <p>1 product on 2 platforms. Meets people's needs</p>
         <button
-          id="signinHeaderBtn"
+          id="signinHeader"
           class="btn-explore-sign_in mt-3 text-light fw-medium"
         >
           <a> Sign In </a>
@@ -414,7 +398,7 @@
             </ul>
           </div>
 
-          <!-- Colm footer -->
+          <!-- Colm footer 2 -->
           <div class="col-md-3">
             <h5>Join with us</h5>
             <ul class="list-unstyled">
@@ -447,8 +431,9 @@
       </div>
     </div>
 
-    <!-- js -->
-    <script src="/assets/js/script.js"></script>
+    <!--  -->
+    <script src="/assets/js/script.js"></script> 
+    <script src="/assets/js/validator.js"></script> 
 
     <!-- bootstrap -->
     <script

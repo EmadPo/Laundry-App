@@ -1,16 +1,73 @@
-var signinBtn = document.getElementById('signinBtn');
-var signinModal = document.getElementById('signin');
-var signUpBtn = document.getElementById('signupBtn');
-var signUpModal = document.getElementById('signup');
+// tombol close pada pop-up sign-in
 var closeModalBtns = document.querySelectorAll('.close');
-var signInFromSignUpBtn = document.getElementById('signinFromSignup');
-var createAccountBtn = document.getElementById('createAccountBtn');
 
-// Transparent navbar and handleModal function
+// modal sign-in
+var signinModal = document.getElementById('signin');
+
+// modal sign-up
+var signUpModal = document.getElementById('signup');
+
+// header sign in
+var signInHeaderBtn = document.getElementById('signinHeader');
+
+// membuka sign in header & navbar
+signinBtn.addEventListener('click', function () {
+  signinModal.style.display = 'block'; // Tampilkan modal sign-in
+});
+signInHeaderBtn.addEventListener('click', function () {
+  signinModal.style.display = 'block'; // Tampilkan modal sign-in
+});
+
+// melihat password, switch pop up
+document.addEventListener('DOMContentLoaded', function () {
+  const signinFromSignup = document.getElementById('signinFromSignup');
+  const signupBtn = document.getElementById('signupBtn');
+  const passwordInput = document.getElementById('password');
+  const togglePasswordButton = document.getElementById('togglePassword');
+  const toggleIcon = document.getElementById('toggleIcon');
+
+  signupBtn.addEventListener('click', function () {
+    signinModal.style.display = 'none';
+    signUpModal.style.display = 'block';
+  });
+
+  signinFromSignup.addEventListener('click', function () {
+    signUpModal.style.display = 'none';
+    signinModal.style.display = 'block';
+  });
+  togglePasswordButton.addEventListener('click', function () {
+    const type =
+      passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Ubah ikon berdasarkan tipe input
+    toggleIcon.classList.toggle('fa-eye-slash');
+  });
+});
+
+// close
+closeModalBtns.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    // Tambahkan class 'fade-out' untuk memulai animasi fade-out
+    signinModal.classList.add('fade-out');
+    signUpModal.classList.add('fade-out');
+
+    // Tunggu sampai animasi selesai sebelum menyembunyikan modal
+    setTimeout(function () {
+      signinModal.style.display = 'none'; // Sembunyikan pop-up sign-in
+      signUpModal.style.display = 'none'; // Sembunyikan pop-up sign-up
+
+      // Hapus class 'fade-out' setelah selesai untuk penggunaan selanjutnya
+      signinModal.classList.remove('fade-out');
+      signUpModal.classList.remove('fade-out');
+    }, 300); // Sesuaikan dengan durasi animasi fade-out (dalam milidetik)
+  });
+});
+
+// navbar
 window.onscroll = function () {
   scrollFunction();
 };
-
 function scrollFunction() {
   var navbar = document.getElementById('navbar');
   if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -19,93 +76,6 @@ function scrollFunction() {
     navbar.classList.remove('scrolled');
   }
 }
-
-function handleModal(btn, modal) {
-  btn.addEventListener('click', function () {
-    modal.style.display = 'block';
-    // Tambahkan event listener khusus untuk tombol sign up
-    signUpBtn.removeEventListener('click', closeSigninModal);
-  });
-
-  window.addEventListener('click', function (event) {
-    if (event.target == modal) {
-      modal.style.display = 'none';
-      // Hapus event listener setelah pop-up ditutup
-      signUpBtn.addEventListener('click', closeSigninModal);
-    }
-  });
-}
-
-// Tambahkan event listener pada tombol sign pada pop up sign up
-// Temukan tombol sign in di pop up sign up
-
-
-// Tambahkan event listener pada tombol sign in di pop up sign up
-signInFromSignUpBtn.addEventListener('click', function (event) {
-  event.preventDefault(); // Mencegah default behavior dari link
-
-  // Terapkan kelas fade-out pada pop up sign up
-  signUpModal.classList.add('fade-out');
-
-  // Tunggu sampai animasi fade-out selesai
-  setTimeout(function () {
-    // Sembunyikan pop up sign up
-    signUpModal.style.display = 'none';
-
-    // Tampilkan pop up sign in
-    signinModal.style.display = 'block';
-  }, 500); // Sesuaikan dengan durasi animasi, dalam kasus ini 0.5 detik (500 milidetik)
-});
-
-// Temukan elemen tombol sign in pada header
-var signinHeaderBtn = document.getElementById('signinHeaderBtn'); // Ganti 'signinHeaderBtn' dengan id yang sesuai dengan tombol sign in pada header
-
-// Tambahkan event listener pada tombol sign in pada header
-signinHeaderBtn.addEventListener('click', function () {
-  // Saat tombol sign in pada header diklik, tampilkan pop up sign in
-  signinModal.style.display = 'block';
-});
-
-// Function untuk menutup pop-up sign in
-function closeSigninModal(event) {
-  event.preventDefault();
-  signinModal.style.display = 'none';
-}
-
-// Panggil fungsi handleModal
-handleModal(signinBtn, signinModal);
-handleModal(signUpBtn, signUpModal);
-
-// Close modals
-closeModalBtns.forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    // Sembunyikan semua modal
-    var modals = document.querySelectorAll('.modal');
-    modals.forEach(function (modal) {
-      modal.style.display = 'none';
-    });
-  });
-});
-
-// Tambahkan event listener untuk menampilkan notifikasi saat tombol diklik
-createAccountBtn.addEventListener('click', function () {
-  // Tampilkan notifikasi menggunakan SweetAlert2
-  Swal.fire({
-    icon: 'success',
-    title: 'Akun berhasil dibuat!',
-    text: 'Silakan login kembali untuk mengakses akun Anda.',
-    showCancelButton: false,
-    confirmButtonText: 'OK',
-  }).then((result) => {
-    // Setelah tombol "OK" ditekan, arahkan ke pop up sign in
-    if (result.isConfirmed) {
-      // Langsung arahkan ke pop up sign in setelah menutup notifikasi
-      signinModal.style.display = 'block';
-      // Sembunyikan pop up sign up
-      signUpModal.style.display = 'none';
-    }
-  });
-});
 
 // slider
 $(document).ready(function () {
