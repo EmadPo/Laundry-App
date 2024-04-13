@@ -1,28 +1,21 @@
-// ngeload filter all
-function initializePage() {
-  const initialFilter = 'all';
-  displayLaundryItems(initialFilter);
-}
-
-window.onload = initializePage;
-
+// profile
 document.getElementById('profileButton').addEventListener('click', function () {
   $('#profileModal').modal('show'); // Show profile modal
 });
 
-// JavaScript to handle logout button click
+// logout
 document.getElementById('logoutButton').addEventListener('click', function () {
   $('#logoutModal').modal('show'); // Show logout confirmation modal
 });
 
-// JavaScript to handle logout confirmation button click
+// konfirm logout
 document
   .getElementById('confirmLogoutButton')
   .addEventListener('click', function () {
-    // Perform logout action
-    // For example: Redirect to logout page
-    window.location.href = '../index.html'; // Change the URL to your logout script
+    window.location.href = '../index.html';
   });
+
+// data
 const laundryData = [
   { id: 1, status: 'pickup', details: 'Laundry item 6' },
   { id: 2, status: 'queue', details: 'Laundry item 1' },
@@ -34,9 +27,17 @@ const laundryData = [
   { id: 8, status: 'pickup', details: 'Laundry item 6' },
 ];
 
+// filter
+// ngeload filter all
+function initializePage() {
+  const initialFilter = 'all';
+  displayLaundryItems(initialFilter);
+}
+window.onload = initializePage;
+
 // Function to filter laundry items
 function filterLaundryItems(filter) {
-  if (filter === 'all_pickup') {
+  if (filter === 'all') {
     return laundryData;
   } else {
     return laundryData.filter((item) => item.status === filter);
@@ -51,45 +52,86 @@ function displayLaundryItems(filter) {
 
   filteredData.forEach((item) => {
     const card = document.createElement('div');
-    card.classList.add('col-md-4');
+    card.classList.add('col-md-12','prop-card');
     card.innerHTML = `
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">ID: ${item.id}</h5>
-            <p class="card-text">${item.details}</p>
-            ${
-              item.status === 'delivery'
-                ? `<button class="btn-custom text-light btn-filter" onclick="handleDoneButtonClick(${item.id})">Done</button>`
-                : ''
-            }
-          </div>
+      <div class="card">
+      <div class="status">${getStatus(item.status)}</div>
+        <div class="card-body">
+          <h5 class="card-title">ID: ${item.id}</h5>
+          <p class="card-text">Date Created: ${getFormattedDate()}</p>
+          <p class="card-text">Estimated Date: ${getEstimatedDate()}</p>
+          <p class="card-text">Price: $${getPrice()}</p>
+          ${
+            item.status === 'delivery'
+              ? `<p>Confirm receipt after you've checked the received items</p>`
+              : ''
+          }
+          ${
+            item.status === 'delivery'
+              ? `<button class="btn-custom text-light btn-filter" onclick="handleDoneButtonClick(${item.id})">Done</button>`
+              : ''
+          }
         </div>
-      `;
+      </div>
+    `;
     laundryList.appendChild(card);
   });
 }
 
-// Initial display of laundry items (All Pickup)
-displayLaundryItems('all_pickup');
+// Function to get formatted date
+function getFormattedDate() {
+  const currentDate = new Date();
+  return currentDate.toLocaleDateString();
+}
 
-// Event listener for filter buttons
+// Function to get estimated date
+function getEstimatedDate() {
+  const currentDate = new Date();
+  const estimatedDate = new Date(
+    currentDate.getTime() + 3 * 24 * 60 * 60 * 1000
+  ); // Adding 3 days
+  return estimatedDate.toLocaleDateString();
+}
+
+// Function to get price
+function getPrice() {
+  return Math.floor(Math.random() * 100) + 50; // Random price between 50 to 150
+}
+
+// Function to get status
+function getStatus(status) {
+  switch (status) {
+    case 'pickup':
+      return 'Pickup';
+    case 'queue':
+      return 'Queue';
+    case 'on_process':
+      return 'On Process';
+    case 'done':
+      return 'Done';
+    case 'ironed':
+      return 'Ironed';
+    case 'delivery':
+      return 'Delivery';
+    default:
+      return '';
+  }
+}
+
+// filter btn active
 document.querySelectorAll('.btn-filter').forEach((button) => {
   button.addEventListener('click', function () {
+    document.querySelectorAll('.btn-filter').forEach((btn) => {
+      btn.classList.remove('active');
+    });
+    this.classList.add('active');
+
     const filter = this.getAttribute('data-filter');
     displayLaundryItems(filter);
   });
 });
 
-// Function to filter laundry items
-function filterLaundryItems(filter) {
-  if (filter === 'all') {
-    return laundryData;
-  } else {
-    return laundryData.filter((item) => item.status === filter);
-  }
-}
-
-// Function to handle "Done" button click
+// "Done" btn
 function handleDoneButtonClick(itemId) {
   const confirmDelivery = confirm('Have you received your clothes?');
   if (confirmDelivery) {

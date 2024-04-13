@@ -18,17 +18,24 @@ signInHeaderBtn.addEventListener('click', function () {
   signinModal.style.display = 'block'; // Tampilkan modal sign-in
 });
 
-// melihat password, switch pop up
 document.addEventListener('DOMContentLoaded', function () {
-  const signinFromSignup = document.getElementById('signinFromSignup');
-  const signupBtn = document.getElementById('signupBtn');
-  const passwordInput = document.getElementById('password');
-  const togglePasswordButton = document.getElementById('togglePassword');
-  const toggleIcon = document.getElementById('toggleIcon');
-  const emailInputs = document.querySelectorAll('input[type="text"]');
-  const passwordInputs = document.querySelectorAll('input[type="password"]');
   const signinModal = document.getElementById('signin');
+  const signinFromSignup = document.getElementById('signinFromSignup');
+  const togglePasswordSignIn = document.getElementById('togglePasswordSignIn');
+  const toggleIconSignIn = document.getElementById('toggleIconSignIn');
+
   const signUpModal = document.getElementById('signup');
+  const signupBtn = document.getElementById('signupBtn');
+  const passwordInputSignUp = document.getElementById('passwordInputSignUp');
+  const toggleIconSignUp = document.getElementById('toggleIconSignUp');
+  const togglePasswordSignUp = document.getElementById('togglePasswordSignUp');
+
+  const passwordInput = document.getElementById('password');
+  const emailInputs = document.querySelectorAll('input');
+  const passwordInputs = document.querySelectorAll('input[type="password"]');
+  const usernameInputs = document.querySelectorAll('input[type="text"]');
+  const phonenumberInputs = document.querySelectorAll('input[type="tel"]');
+  const cityInputs = document.querySelectorAll('input');
 
   window.addEventListener('click', function (event) {
     // Periksa apakah klik terjadi di luar pop-up sign-in
@@ -59,13 +66,25 @@ document.addEventListener('DOMContentLoaded', function () {
     signUpModal.style.display = 'none';
     signinModal.style.display = 'block';
   });
-  togglePasswordButton.addEventListener('click', function () {
+  // icon sign in / up
+  togglePasswordSignIn.addEventListener('click', function () {
     const type =
       passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
     passwordInput.setAttribute('type', type);
 
     // Ubah ikon berdasarkan tipe input
-    toggleIcon.classList.toggle('fa-eye-slash');
+    toggleIconSignIn.classList.toggle('fa-eye-slash');
+  });
+  // icon sign up
+  togglePasswordSignUp.addEventListener('click', function () {
+    const type =
+      passwordInputSignUp.getAttribute('type') === 'password'
+        ? 'text'
+        : 'password';
+    passwordInputSignUp.setAttribute('type', type);
+
+    // Ubah ikon berdasarkan tipe input
+    toggleIconSignUp.classList.toggle('fa-eye-slash');
   });
 
   // Tambahkan event listener pada input teks untuk kedua formulir
@@ -88,7 +107,43 @@ document.addEventListener('DOMContentLoaded', function () {
         input.style.color = 'black';
       } else {
         input.style.fontWeight = 'normal';
-        input.style.color = 'initial'; // Atur warna kembali ke default
+        input.style.color = 'initial';
+      }
+    });
+  });
+
+  usernameInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value.trim() !== '') {
+        input.style.fontWeight = '500';
+        input.style.color = 'black';
+      } else {
+        input.style.fontWeight = 'normal';
+        input.style.color = 'initial';
+      }
+    });
+  });
+
+  cityInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value.trim() !== '') {
+        input.style.fontWeight = '500';
+        input.style.color = 'black';
+      } else {
+        input.style.fontWeight = 'normal';
+        input.style.color = 'initial';
+      }
+    });
+  });
+
+  phonenumberInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (input.value.trim() !== '') {
+        input.style.fontWeight = '500';
+        input.style.color = 'black';
+      } else {
+        input.style.fontWeight = 'normal';
+        input.style.color = 'initial';
       }
     });
   });

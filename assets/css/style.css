@@ -68,7 +68,8 @@ a:hover {
 .sign-in-prop {
   padding: 15% 0 8% 0 !important;
 }
-#togglePassword {
+#togglePasswordSignUp,
+#togglePasswordSignIn {
   background: none;
   border: none;
   cursor: pointer;
@@ -419,5 +420,3 @@ footer {
     transform: translateY(0);
   }
 }
-
-

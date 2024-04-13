@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const signupForm = document.getElementById('signupForm');
+  
 
   signupForm.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -142,4 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  const signupInputs = document.querySelectorAll(
+    '#signupForm input[type="text"], #signupForm input[type="password"]'
+  );
 });

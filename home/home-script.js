@@ -17,6 +17,9 @@ document
     window.location.href = '../index.html'; // Change the URL to your logout script
   });
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 function redirectStatusLaundry() {
   window.location.href = '../status/status-index.html';
 }
