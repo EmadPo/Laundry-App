@@ -124,11 +124,12 @@
             name="username"
           />
           <input
-            id="email"
+            id="emailInputSignUp"
             placeholder="Email Address"
             name="email"
           />
           <input
+            maxlength="13"
             id="phone"
             type="tel"
             placeholder="Phone Number"
@@ -137,11 +138,12 @@
           <input id="city" placeholder="City" name="city" />
           <div class="d-flex pass-prop">
             <input
+              id="passwordInputSignUp"
               type="password"
               placeholder="Password"
               name="password"
-              id="password"
             />
+
             <button id="togglePassword" type="button">
               <i id="toggleIcon" class="fas fa-eye"></i>
             </button>
