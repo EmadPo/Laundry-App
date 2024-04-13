@@ -68,19 +68,18 @@ li {
 }
 
 /* header */
-header {
-  padding: 0 0 0 0;
+.paralaxx {
   position: relative;
+  padding: 15vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top;
+  background-image: url(/assets/img/1.jpeg);
+  height: 110vh;
 }
-header img {
-  max-height: fit-content;
-  height: auto;
-  object-fit: cover;
-  z-index: 0;
-}
-header h1,
-p {
-  color: #ffffff;
+.header-prop {
+  padding: 25vh;
 }
 .header-overlay {
   position: absolute;
@@ -88,7 +87,11 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, transparent);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, transparent);
+}
+header h1,
+p {
+  color: #ffffff;
 }
 
 /* body */
@@ -97,7 +100,7 @@ p {
   background-color: #101820;
   border-radius: 13vh 13vh 0 0;
   line-height: 1.6;
-  margin: -15vh auto 0 auto;
+  margin: -12vh auto 0 auto;
   position: relative;
 }
 .body-img-prop {
