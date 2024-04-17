@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  
-
   signupForm.addEventListener('submit', function (event) {
     event.preventDefault();
 

@@ -1,14 +1,56 @@
 /* body */
 body {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Safari, and Opera */
+}
+img {
+  pointer-events: none; /* Mencegah gambar dari interaksi pointer */
 }
 a,
 a:hover {
   text-decoration: none !important;
   color: inherit !important;
+  cursor: pointer !important;
+}
+
+/* modal */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 /* btn */
+.btm {
+  transition: 0.8s ease;
+}
+.btn-google {
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 1vh 1.8vh;
+  transition: 0.8s ease;
+}
+.btn-google:hover {
+  background-color: #c13525;
+  color: #ffffff;
+}
+.btn-facebook {
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 1vh 1.7vh;
+  transition: 0.8s ease;
+}
+.btn-facebook:hover {
+  background-color: #2d4373;
+  color: #ffffff;
+}
 .btn-custom {
   background-color: #464bbe;
   border-radius: 20px;
@@ -16,13 +58,36 @@ a:hover {
   padding: 1vh 3vh 1vh 3vh;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   transition: 0.3s ease;
+  border: none;
 }
 .btn-custom:hover {
   border-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+
 .btn-logout {
   background-color: red;
+}
+
+/* card */
+.card {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: transform 0.3s ease;
+  margin: 1.5vh;
+}
+.card:hover {
+  transform: translateY(-10px);
+}
+.card-title {
+  color: #464bbe;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+.card-text {
+  color: #555;
+  margin-top: 15px;
+  font-size: 18px;
+  padding: 10px;
 }
 
 /* navbar */
@@ -36,14 +101,12 @@ a:hover {
 }
 li {
   margin: auto;
-  padding-left: 1.5vh; 
+  padding-left: 1.5vh;
   padding-right: 1.5vh;
 }
-
 .nav-item {
   margin: 0 2vh 0 2vh;
 }
-
 .nav-link {
   position: relative;
   overflow: hidden;
@@ -55,103 +118,88 @@ li {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff; /* Warna garis bawah */
+  background-color: #ffffff;
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
 .nav-link:hover::before {
+  bottom: 0; /* Mengubah posisi garis bawah saat dihover */
   color: inherit;
   transform: scaleX(1);
 }
 .btn-profile {
-  background-color: transparent !important; /* Menghapus latar belakang tombol */
-  border: none; /* Menghapus border tombol */
-  padding: 0; /* Menghapus padding tombol */
-  color: #ffffff !important; /* Mengatur warna ikon menjadi putih */
+  background-color: transparent !important;
+  border: none;
+  padding: 0;
+  color: #ffffff !important;
   font-size: 24px;
 }
 
-/* Search bar */
-#search {
-  height: 100%;
-  padding: 35vh 0;
-  text-align: center;
+/* Header */
+header {
+  background-color: #ffffff;
+  padding: 20vh 12vh 0 12vh;
+}
+.pos-head-prop {
+  flex-direction: column;
+  align-items: center;
+}
+header h1 {
+  padding: 5vh 5vh 0 5vh;
+}
+header p {
+  font-size: 3vh;
+  padding: 1vh 0 1vh 0 !important;
+}
+.box {
+  position: relative;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+.input {
+  padding: 10px;
+  width: 80px;
+  height: 80px;
+  background: none;
+  border: 4px solid #464bbe;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-size: 26px;
+  color: #464bbe;
+  font-weight: 500;
+  outline: none;
+  transition: 0.5s;
+}
+.box:hover input {
+  width: 350px;
+  background: transparent;
+  border-radius: 10px;
+}
+.box i {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  color: #464bbe;
+  transition: 0.2s;
+}
+.box:hover i {
+  opacity: 0;
+  z-index: -1;
+}
+.box:not(:hover) input::placeholder {
+  color: transparent;
+  transition: 0.2s;
 }
 
-#search h2 {
-  color: #333;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-control {
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  padding: 0 20px;
-  font-size: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* product */
+#products {
+  padding: 20vh 20vh 0 20vh;
 }
 
 /* Laundry Types Section */
 #services {
-  padding: 80px 0;
-}
-
-.card {
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-body {
-  padding: 30px;
-}
-
-.card-title {
-  color: #464bbe;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.card-text {
-  color: #333;
-}
-
-/* Promotions Section */
-#promo {
-  padding: 80px 0;
-}
-
-.promo-card {
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  transition: transform 0.3s ease;
-  margin-bottom: 30px;
-}
-
-.promo-card:hover {
-  transform: translateY(-5px);
-}
-
-.promo-title {
-  color: #464bbe;
-  font-size: 24px;
-  margin-bottom: 15px;
-}
-
-.promo-description {
-  color: #333;
+  padding: 8vh 0;
 }
 
 /* Footer */

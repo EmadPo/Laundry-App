@@ -1,20 +1,44 @@
-// JavaScript to handle edit button click
+// profile
 document.getElementById('profileButton').addEventListener('click', function () {
   $('#profileModal').modal('show'); // Show profile modal
 });
 
-// JavaScript to handle logout button click
+// logout
 document.getElementById('logoutButton').addEventListener('click', function () {
   $('#logoutModal').modal('show'); // Show logout confirmation modal
 });
 
-// JavaScript to handle logout confirmation button click
+// edit
+const editProfileButton = document.getElementById('editButton');
+editProfileButton.addEventListener('click', function () {
+  // Sembunyikan modal profil
+  $('#profileModal').modal('hide');
+  // Tampilkan modal edit
+  $('#editProfileModal').modal('show');
+});
+
+// close
+const closeButtons = document.querySelectorAll('.modal .close');
+closeButtons.forEach((button) => {
+  button.addEventListener('click', function () {
+    // Dapatkan modal yang terkait dengan tombol close
+    const modal = button.closest('.modal');
+    // Sembunyikan modal
+    $(modal).modal('hide');
+  });
+});
+
+document
+  .getElementById('logoutModal')
+  .addEventListener('hide.bs.modal', function () {
+    $('#profileModal').modal('show'); // Menampilkan kembali modal sebelumnya
+  });
+
+// konfirm logout
 document
   .getElementById('confirmLogoutButton')
   .addEventListener('click', function () {
-    // Perform logout action
-    // For example: Redirect to logout page
-    window.location.href = '../index.html'; // Change the URL to your logout script
+    window.location.href = '../index.html';
   });
 
 function scrollToTop() {

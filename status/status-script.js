@@ -8,6 +8,21 @@ document.getElementById('logoutButton').addEventListener('click', function () {
   $('#logoutModal').modal('show'); // Show logout confirmation modal
 });
 
+// close
+const closeButtons = document.querySelectorAll('.modal .close');
+closeButtons.forEach((button) => {
+  button.addEventListener('click', function () {
+    // Dapatkan modal yang terkait dengan tombol close
+    const modal = button.closest('.modal');
+    // Sembunyikan modal
+    $(modal).modal('hide');
+  });
+});
+
+document.getElementById('logoutModal').addEventListener('hide.bs.modal', function () {
+  $('#profileModal').modal('show'); // Menampilkan kembali modal sebelumnya
+});
+
 // konfirm logout
 document
   .getElementById('confirmLogoutButton')
@@ -15,95 +30,19 @@ document
     window.location.href = '../index.html';
   });
 
-// data
-const laundryData = [
-  {
-    id: 2404141,
-    nama: 'Laundry Joss',
-    alamat: 'Jl. Mangga Hitam',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'pickup',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item 6',
-  },
-  {
-    id: 2404143,
-    nama: 'Laundry Mantab',
-    alamat: 'Jl. Kedelai Malika',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'queue',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item 6',
-  },
-  {
-    id: 2404147,
-    nama: 'Laundry KelazZ',
-    alamat: 'Komplek Merdeka',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'on_process',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item ',
-  },
-  {
-    id: 2404140,
-    nama: 'Laundry Pandita',
-    alamat: 'Komplek Suka Suka',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'ironed',
-    isPaid: true,
-    totalPaid: 0,
-    details: 'Laundry item ',
-  },
-  {
-    id: 2404140,
-    nama: 'Laundry Kelas',
-    alamat: 'Komplek Suka Suka',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'ironed',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item ',
-  },
-  {
-    id: 2404141445,
-    nama: 'Laundry Tronton',
-    alamat: 'Jl. Apel I',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'done',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item 6',
-  },
-  {
-    id: 2404141124,
-    nama: 'Laundry Smart',
-    alamat: 'Jl. Mandi 2',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'done',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item 6',
-  },
-  {
-    id: 2404142234,
-    nama: 'Laundry Menyala',
-    alamat: 'Komplek Bangsanwan',
-    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
-    status: 'delivery',
-    isPaid: false,
-    totalPaid: 0,
-    details: 'Laundry item 6',
-  },
-];
-
 // filter
-// ngeload filter all
+// ngeload filter all & edit
 function initializePage() {
   const initialFilter = 'all';
   displayLaundryItems(initialFilter);
+
+  const editProfileButton = document.getElementById('editButton');
+  editProfileButton.addEventListener('click', function () {
+    // Sembunyikan modal profil
+    $('#profileModal').modal('hide');
+    // Tampilkan modal edit
+    $('#editProfileModal').modal('show');
+  });
 }
 window.onload = initializePage;
 
@@ -218,42 +157,42 @@ document.querySelectorAll('.btn-filter').forEach((button) => {
 
 function handlePaymentButtonClick(itemId) {
   // Hapus QR code sebelum membuat yang baru
-  document.getElementById("qrcode").innerHTML = '';
+  document.getElementById('qrcode').innerHTML = '';
 
-  // Ambil data laundry berdasarkan itemId
-  const laundry = laundryData.find(item => item.id === itemId);
+  const laundry = laundryData.find((item) => item.id === itemId);
 
-  // Mendapatkan informasi unik berdasarkan data laundry
-  const qrText = `Laundry ID: ${laundry.id}\nNama: ${laundry.nama}\nAlamat: ${laundry.alamat}\nTotal: $${getPriceForLaundry(laundry)}`;
+  // mendapatkan informasi unik berdasarkan data laundry
+  const qrText = `Laundry ID: ${laundry.id}\nNama: ${laundry.nama}\nAlamat: ${
+    laundry.alamat
+  }\nTotal: $${getPriceForLaundry(laundry)}`;
 
-  // Generate QR code dengan teks yang sesuai
-  const qrCode = new QRCode(document.getElementById("qrcode"), {
-      text: qrText,
-      width: 200,
-      height: 200
+  // Generate qr
+  const qrCode = new QRCode(document.getElementById('qrcode'), {
+    text: qrText,
+    width: 200,
+    height: 200,
   });
 
-  // Tampilkan Sweet Alert untuk informasi pembayaran
+  // informasi pembayaran
   Swal.fire({
-      title: 'Payment Method',
-      text: 'Scan the QR code below and pay to complete the laundry payment',
-      imageUrl: qrCode._el.childNodes[0].toDataURL(), // Mengambil gambar dari QR code
-      imageWidth: 200,
-      imageHeight: 200,
-      confirmButtonText: 'OK'
+    title: 'Payment Method',
+    text: 'Scan the QR code below and pay to complete the laundry payment',
+    imageUrl: qrCode._el.childNodes[0].toDataURL(), // gambar qris
+    imageWidth: 200,
+    imageHeight: 200,
+    confirmButtonText: 'OK',
   });
 }
 
-
-// Fungsi untuk mendapatkan harga berdasarkan data laundry
+// fungsi mendapatkan harga berdasarkan data laundry
 function getPriceForLaundry(laundry) {
-  // Lakukan pengecekan, misalnya jika sudah dibayar maka ambil totalPaid, jika belum ambil harga acak
+  // pengecekan
   return laundry.isPaid ? laundry.totalPaid : getPrice();
 }
 
-// "Done" btn
+// done btn
 function handleDoneButtonClick(itemId) {
-  // Gunakan Sweet Alert untuk menampilkan feedback
+  // feedback completed
   Swal.fire({
     title: 'Laundry Completed',
     text: 'Laundry has been marked as completed!',
@@ -261,7 +200,7 @@ function handleDoneButtonClick(itemId) {
     confirmButtonText: 'OK',
   }).then((result) => {
     if (result.isConfirmed) {
-      // Tampilkan form feedback dan rating
+      // feedback dan rating
       Swal.fire({
         title: 'Feedback & Rating',
         html: `
@@ -289,12 +228,12 @@ function handleDoneButtonClick(itemId) {
         preConfirm: () => {
           const feedback = document.getElementById('feedback').value;
           const rating = document.querySelectorAll('.star.selected').length;
-          // Di sini Anda bisa mengirimkan feedback dan rating ke server atau melakukan tindakan lain yang diperlukan
+          // timer
           return new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              Swal.close(); // Menutup Sweet Alert setelah tindakan selesai
-            }, 2000); // Simulasi pengiriman data ke server, ubah nilainya sesuai kebutuhan
+              Swal.close();
+            }, 2000);
           });
         },
       });
@@ -319,6 +258,91 @@ function handleDoneButtonClick(itemId) {
   });
 }
 
+// data
+const laundryData = [
+  {
+    id: 2404141,
+    nama: 'Laundry Joss',
+    alamat: 'Jl. Mangga Hitam',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'pickup',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item 6',
+  },
+  {
+    id: 2404143,
+    nama: 'Laundry Mantab',
+    alamat: 'Jl. Kedelai Malika',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'queue',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item 6',
+  },
+  {
+    id: 2404147,
+    nama: 'Laundry KelazZ',
+    alamat: 'Komplek Merdeka',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'on_process',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item ',
+  },
+  {
+    id: 2404140,
+    nama: 'Laundry Pandita',
+    alamat: 'Komplek Suka Suka',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'ironed',
+    isPaid: true,
+    totalPaid: 0,
+    details: 'Laundry item ',
+  },
+  {
+    id: 2404140,
+    nama: 'Laundry Kelas',
+    alamat: 'Komplek Suka Suka',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'ironed',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item ',
+  },
+  {
+    id: 2404141445,
+    nama: 'Laundry Tronton',
+    alamat: 'Jl. Apel I',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'done',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item 6',
+  },
+  {
+    id: 2404141124,
+    nama: 'Laundry Smart',
+    alamat: 'Jl. Mandi 2',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'done',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item 6',
+  },
+  {
+    id: 2404142234,
+    nama: 'Laundry Menyala',
+    alamat: 'Komplek Bangsanwan',
+    estimatedDate: new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000),
+    status: 'delivery',
+    isPaid: false,
+    totalPaid: 0,
+    details: 'Laundry item 6',
+  },
+];
+
+// direct
 function redirectHome() {
   window.location.href = '../home/home-index.html';
 }

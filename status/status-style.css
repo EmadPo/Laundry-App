@@ -7,7 +7,7 @@ body {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Safari, and Opera */
 }
-.bg-custom{
+.bg-custom {
   background-color: #464bbe;
 }
 a,
@@ -16,6 +16,7 @@ a:hover {
   color: inherit !important;
 }
 
+/* btn */
 .btn-custom {
   background-color: #464bbe;
   border-radius: 20px;
@@ -149,6 +150,7 @@ header {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .close {
@@ -168,7 +170,6 @@ header {
   margin: auto;
   text-align: center;
 }
-
 
 /* footer */
 footer {

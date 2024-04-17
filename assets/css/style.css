@@ -196,7 +196,7 @@ li {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #ffffff; /* Warna garis bawah */
+  background-color: #ffffff; 
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }

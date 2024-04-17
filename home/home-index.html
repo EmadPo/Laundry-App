@@ -116,9 +116,10 @@
           </div>
           <div class="modal-body">
             <!-- Display profile data -->
-            <p>Name: John Doe</p>
-            <p>Email: john@example.com</p>
-            <p>Username: johndoe123</p>
+            <p>Username: John Doe</p>
+            <p>Email Address: john@example.com</p>
+            <p>Phone Number: 081234567890</p>
+            <p>City: Welington</p>
           </div>
           <div class="modal-footer">
             <button
@@ -169,18 +170,17 @@
           <div class="modal-body">
             <form id="editProfileForm">
               <div class="form-group">
-                <label for="editName">Name</label>
+                <label for="editUsername">Username</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="editName"
-                  placeholder="Enter your name"
+                  id="editUsername"
+                  placeholder="Enter your Username"
                 />
               </div>
               <div class="form-group">
                 <label for="editEmail">Email address</label>
                 <input
-                  type="email"
                   class="form-control"
                   id="editEmail"
                   aria-describedby="emailHelp"
@@ -188,12 +188,21 @@
                 />
               </div>
               <div class="form-group">
-                <label for="editUsername">Username</label>
+                <label for="editPhone">Phone Number</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="editUsername"
-                  placeholder="Enter username"
+                  id="editPhone"
+                  placeholder="Enter Phone"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editCity">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCity"
+                  placeholder="Enter City"
                 />
               </div>
               <button type="submit" class="btn-custom text-light">
@@ -254,29 +263,126 @@
     </div>
 
     <!-- Header -->
-    <header id="search">
-      <div class="container text-center">
-        <h2 class="p-5">Search Laundry Service in Your City</h2>
-        <!-- Add your search form here -->
-        <form>
-          <div class="form-group">
+    <header>
+      <div class="container text-center d-flex pos-head-prop">
+        <h1>Welcome to Spotless</h1>
+        <p>Search Your Places</p>
+        <!-- search -->
+        <div class="box">
+          <form name="search">
             <input
               type="text"
-              class="form-control"
-              id="citySearch"
-              placeholder="Enter city name"
+              class="input"
+              name="txt"
+              onmouseout="this.value = ''; this.blur();"
+              placeholder="Your city"
             />
-          </div>
-          <button type="submit" class="btn-custom text-light">Search</button>
-        </form>
+          </form>
+          <i class="fas fa-search"></i>
+        </div>
       </div>
     </header>
+
+    <!-- Laundry On Your Area -->
+    <section id="products">
+      <div class="container text-center">
+        <h2 class="pb-5">Laundry On Your Area</h2>
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="/assets/img/Laundry Milo.jpg"
+                class="card-img-top"
+                alt="Product 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Laundry Milo</h5>
+                <p class="card-text text-left">
+                  Address: 456 Oak Avenue, Townsville<br />
+                  Price: $2.99 per kg<br />
+                  Types: Regular, Express, Delicate, Dry Cleaning
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="/assets/img/Laundry TDR.jpg"
+                class="card-img-top"
+                alt="Product 2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Laundry TDR</h5>
+                <p class="card-text text-left">
+                  Address: 789 Elm Street, Villagetown<br />
+                  Price: $3.99 per kg<br />
+                  Types: Regular, Express, Delicate, Dry Cleaning
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="col-md-4">
+            <div class="card">
+              <img
+                src="/assets/img/Laundrt Zz.jpg"
+                class="card-img-top"
+                alt="Product 3"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Laundrt Zz</h5>
+                <p class="card-text text-left">
+                  Address: 123 Main Street, Cityville<br />
+                  Price: $1.99 per kg<br />
+                  Types: Regular, Express, Delicate
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Laundry Types -->
     <section id="services">
       <div class="container text-center">
         <h2 class="d-flex justify-content-start pb-5">Laundry Types</h2>
         <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Regular Service</h5>
+                <p class="card-text">
+                  Standard laundry service with regular turnaround time.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Express Service -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Express Service</h5>
+                <p class="card-text">
+                  Quick laundry service with expedited turnaround time.
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Delicate Service -->
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Delicate Service</h5>
+                <p class="card-text">
+                  Specialized laundry service for delicate garments.
+                </p>
+              </div>
+            </div>
+          </div>
           <div class="col-md-4">
             <div class="card">
               <div class="card-body">
@@ -307,22 +413,12 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Promotions -->
-    <section id="promo">
-      <div class="container text-center">
-        <h2 class="d-flex justify-content-start pb-5">Promotions</h2>
-        <div class="row">
           <div class="col-md-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">10% Off on First Order</h5>
+                <h5 class="card-title">Folding</h5>
                 <p class="card-text">
-                  Get 10% discount on your first laundry order. Use code
-                  FIRST10.
+                  Let us fold your clothes neatly for you.
                 </p>
               </div>
             </div>
@@ -330,9 +426,9 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Free Pickup and Delivery</h5>
+                <h5 class="card-title">Stain Removal</h5>
                 <p class="card-text">
-                  Avail free pickup and delivery on orders above $50.
+                  We can effectively remove tough stains from your clothes.
                 </p>
               </div>
             </div>
@@ -340,9 +436,9 @@
           <div class="col-md-4">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Weekly Special Offer</h5>
+                <h5 class="card-title">Specialty Garment Care</h5>
                 <p class="card-text">
-                  Check out our weekly special offers and save big on laundry.
+                  Trust us with your delicate and specialty garments.
                 </p>
               </div>
             </div>
@@ -420,7 +516,8 @@
     </div>
 
     <!-- JS -->
-    <script src="/home/home-script.js"></script>
+    <script src="../home/home-script.js"></script>
+    <script src="../assets/js/status-validator.js"></script>
 
     <!-- Bootstrap -->
     <script
@@ -428,6 +525,9 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+
+    <!-- sweer alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

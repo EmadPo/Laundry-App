@@ -40,7 +40,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
 
-    <!-- sweer alert -->
+    <!-- sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <!-- QR Code Generator -->
@@ -123,9 +123,10 @@
           </div>
           <div class="modal-body">
             <!-- Display profile data -->
-            <p>Name: John Doe</p>
-            <p>Email: john@example.com</p>
-            <p>Username: johndoe123</p>
+            <p>Username: John Doe</p>
+            <p>Email Address: john@example.com</p>
+            <p>Phone Number: 081234567890</p>
+            <p>City: Welington</p>
           </div>
           <div class="modal-footer">
             <button
@@ -176,18 +177,17 @@
           <div class="modal-body">
             <form id="editProfileForm">
               <div class="form-group">
-                <label for="editName">Name</label>
+                <label for="editUsername">Username</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="editName"
-                  placeholder="Enter your name"
+                  id="editUsername"
+                  placeholder="Enter your Username"
                 />
               </div>
               <div class="form-group">
                 <label for="editEmail">Email address</label>
                 <input
-                  type="email"
                   class="form-control"
                   id="editEmail"
                   aria-describedby="emailHelp"
@@ -195,12 +195,21 @@
                 />
               </div>
               <div class="form-group">
-                <label for="editUsername">Username</label>
+                <label for="editPhone">Phone Number</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="editUsername"
-                  placeholder="Enter username"
+                  id="editPhone"
+                  placeholder="Enter Phone"
+                />
+              </div>
+              <div class="form-group">
+                <label for="editCity">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="editCity"
+                  placeholder="Enter City"
                 />
               </div>
               <button type="submit" class="btn-custom text-light">
@@ -406,7 +415,8 @@
     </div>
 
     <!-- js -->
-    <script src="./status-script.js"></script>
+    <script src="../status/status-script.js"></script>
+    <script src="../assets/js/status-validator.js"></script>
 
     <!-- bootstrap -->
     <script
